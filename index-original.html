@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b0a">
+<title>EDEN MARKET</title>
+<style>:root{
+--bg:#080a09;--panel:#111512;--panel2:#171b18;--line:#2d342f;
+--text:#f7f7f2;--muted:#9da59e;--gold:#f4c542;--gold2:#dcae29;--red:#ea4b5a;--green:#20c879;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:
+radial-gradient(circle at 80% 0%,rgba(244,197,66,.09),transparent 28%),
+radial-gradient(circle at 0% 20%,rgba(24,150,105,.08),transparent 25%),var(--bg);
+color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}.app{max-width:1120px;margin:auto;padding:18px 18px 90px}.topbar{height:62px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-size:23px;font-weight:850;letter-spacing:-.05em}.brand b{color:var(--gold)}
+.brand-mark{width:40px;height:40px;display:grid;place-items:center;border:2px solid var(--gold);border-radius:13px;background:#11140f}
+.top-actions{display:flex;gap:8px}.circle{width:44px;height:44px;border-radius:14px;background:var(--panel);border:1px solid var(--line);color:var(--text);cursor:pointer;position:relative}.circle i,.nav i{position:absolute;background:var(--red);color:#fff;font-style:normal;font-size:10px;min-width:18px;height:18px;border-radius:20px;display:grid;place-items:center;top:-5px;right:-5px}
+.page{display:none}.page.active{display:block}.hero{min-height:430px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(135deg,#141915,#0c0f0d);overflow:hidden;position:relative;display:grid;grid-template-columns:1.25fr .75fr;align-items:center;padding:42px}.hero-glow{position:absolute;width:360px;height:360px;border-radius:50%;right:-90px;top:-110px;background:rgba(244,197,66,.12);filter:blur(65px)}.hero-copy{position:relative;z-index:2}.eyebrow{color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.18em}.hero h1{font-size:clamp(34px,6vw,62px);line-height:.98;letter-spacing:-.065em;margin:14px 0}.hero h1 strong{color:var(--gold)}.hero p{color:var(--muted);font-size:17px}.trust{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}.trust span{border:1px solid var(--line);background:#0d100e;border-radius:99px;padding:9px 12px;font-size:12px}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap}.gold-btn,.dark-btn{border-radius:13px;padding:12px 18px;font-weight:850;cursor:pointer}.gold-btn{background:var(--gold);border:1px solid var(--gold);color:#111}.dark-btn{background:transparent;border:1px solid var(--gold);color:var(--text)}.full{width:100%;margin-top:18px}.hero-3d{display:grid;place-items:center;perspective:900px;min-height:300px}.cube{width:150px;height:150px;position:relative;transform-style:preserve-3d;animation:spin 9s linear infinite}.face{position:absolute;width:150px;height:150px;border:2px solid rgba(244,197,66,.65);background:linear-gradient(135deg,rgba(244,197,66,.17),rgba(15,20,16,.85));display:grid;place-items:center;font-size:60px;font-weight:950;color:var(--gold);backdrop-filter:blur(4px)}.f1{transform:translateZ(75px)}.f2{transform:rotateY(90deg) translateZ(75px)}.f3{transform:rotateY(180deg) translateZ(75px)}.f4{transform:rotateY(-90deg) translateZ(75px)}.f5{transform:rotateX(90deg) translateZ(75px)}.f6{transform:rotateX(-90deg) translateZ(75px)}@keyframes spin{to{transform:rotateX(360deg) rotateY(360deg)}}
+.search-row{display:flex;gap:10px;margin:18px 0}.search{height:50px;display:flex;align-items:center;gap:10px;flex:1;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:0 14px}.search span{font-size:25px}.search input{width:100%;border:0;outline:0;background:none;color:#fff}.promo{border:1px solid #3d432f;border-radius:20px;padding:22px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(110deg,#141b11,#272516);overflow:hidden}.promo small{color:var(--gold);font-weight:900}.promo h2{font-size:30px;margin:6px 0}.promo h2 b{color:var(--gold)}.promo p{color:var(--muted);margin:0}.promo-art{font-size:62px;white-space:nowrap}.promo-art span{font-size:42px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:22px 0 11px}.section-title h2{margin:0;font-size:21px}.timer{color:var(--gold);font-weight:850}.categories{display:flex;gap:9px;overflow:auto;padding-bottom:4px}.cat{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);color:#ddd;padding:10px 15px;border-radius:12px;cursor:pointer}.cat.active{border-color:var(--gold);color:var(--gold)}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.product{border:1px solid var(--line);background:var(--panel);border-radius:17px;overflow:hidden}.product-img{height:150px;background:linear-gradient(145deg,#292e2a,#121512);display:grid;place-items:center;font-size:56px;position:relative}.product-img .tag{position:absolute;left:9px;top:9px;background:var(--red);font-size:10px;font-weight:900;padding:5px 7px;border-radius:7px}.product-img .new{background:var(--green);color:#03170e}.heart{position:absolute;right:8px;top:8px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#0b0e0c;color:#fff;cursor:pointer}.heart.on{color:#ff5664}.product-info{padding:12px}.product-name{font-size:14px;font-weight:750;min-height:35px}.price{color:var(--gold);font-weight:900;margin-top:6px}.old{text-decoration:line-through;color:#727871;font-size:11px;margin-left:5px}.rating{font-size:12px;margin-top:5px;color:#ddd}.add{width:100%;padding:9px;margin-top:9px;border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:9px;font-weight:800;cursor:pointer}.add:hover{background:var(--gold);color:#111}
+.page-head{display:flex;justify-content:space-between;align-items:center;margin:20px 0}.page-head h1{font-size:28px;margin:0}.text-btn{background:none;border:0;color:var(--gold);cursor:pointer}.cart-row,.order-card,.account-card{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:16px;margin-bottom:10px}.cart-row{display:flex;justify-content:space-between;align-items:center;gap:12px}.cart-row small,.muted{color:var(--muted);display:block}.qty{display:flex;align-items:center;gap:9px}.qty button{width:34px;height:34px;border:1px solid var(--line);background:#0b0e0c;color:#fff;border-radius:9px}.summary{margin-top:14px;border:1px solid var(--line);border-radius:18px;padding:18px;background:var(--panel)}.summary-line{display:flex;justify-content:space-between;margin:7px 0}.summary-total{font-size:20px;font-weight:900;color:var(--gold);padding-top:8px;border-top:1px solid var(--line)}.order-top{display:flex;justify-content:space-between;gap:10px}.order-top small{display:block;color:var(--muted);margin-top:5px}.status{color:var(--gold)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px}.steps span{height:42px;border-top:3px solid var(--line);color:#777;position:relative;padding-top:8px;text-align:center}.steps span.done,.steps span.current{border-color:var(--gold);color:var(--gold)}.steps small{display:block;color:#aaa;font-size:10px}.account-card{max-width:620px;margin:25px auto;text-align:center}.avatar{width:72px;height:72px;border-radius:50%;background:var(--gold);color:#111;display:grid;place-items:center;font-size:30px;font-weight:900;margin:auto}.account-list{margin-top:20px}.account-list button{width:100%;padding:15px;border:0;border-bottom:1px solid var(--line);background:transparent;color:#eee;display:flex;justify-content:space-between;text-align:left;cursor:pointer}.account-list button span{color:var(--muted)}
+.bottom-nav{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(650px,calc(100% - 28px));display:flex;justify-content:space-around;background:rgba(13,16,14,.96);border:1px solid var(--line);border-radius:19px;padding:8px;backdrop-filter:blur(16px);z-index:30}.nav{width:50px;height:44px;border:0;background:transparent;color:#858d86;border-radius:12px;position:relative;cursor:pointer;font-size:20px}.nav.active{background:#272312;color:var(--gold)}.toast{position:fixed;left:50%;bottom:85px;transform:translate(-50%,20px);background:#f4c542;color:#111;padding:11px 16px;border-radius:99px;font-weight:850;opacity:0;pointer-events:none;transition:.25s;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.app{padding:10px 10px 90px}.hero{grid-template-columns:1fr;padding:27px;min-height:0}.hero-3d{min-height:190px;order:-1}.cube{width:105px;height:105px}.face{width:105px;height:105px;font-size:43px}.f1{transform:translateZ(52px)}.f2{transform:rotateY(90deg) translateZ(52px)}.f3{transform:rotateY(180deg) translateZ(52px)}.f4{transform:rotateY(-90deg) translateZ(52px)}.f5{transform:rotateX(90deg) translateZ(52px)}.f6{transform:rotateX(-90deg) translateZ(52px)}.product-grid{grid-template-columns:repeat(2,1fr)}.product-img{height:120px}.promo{padding:17px}.promo-art{font-size:42px}.promo-art span{font-size:29px}.brand{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.cube{animation:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Eden Market">
+      <span class="brand-mark">🎩</span><span>EDEN <b>MARKET</b></span>
+    </a>
+    <div class="top-actions">
+      <button class="circle" id="notifyBtn">♧<i>3</i></button>
+      <button class="circle" id="cartTop">🛒<i id="cartCountTop">0</i></button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-copy">
+          <span class="eyebrow">MARKETPLACE PREMIUM</span>
+          <h1>Bienvenue sur <strong>Eden Market</strong></h1>
+          <p>Tout ce dont vous avez besoin, au même endroit.</p>
+          <div class="trust">
+            <span>🚚 Paiement à la livraison</span>
+            <span>⚡ Livraison rapide</span>
+            <span>🛡️ Produits garantis</span>
+            <span>🎧 Service client 7j/7</span>
+          </div>
+          <div class="hero-buttons">
+            <button class="gold-btn" onclick="showPage('account')">Se connecter</button>
+            <button class="dark-btn" onclick="showPage('account')">S'inscrire</button>
+          </div>
+        </div>
+        <div class="hero-3d" aria-hidden="true">
+          <div class="cube">
+            <div class="face f1">E</div><div class="face f2">M</div><div class="face f3">✦</div>
+            <div class="face f4">E</div><div class="face f5">M</div><div class="face f6">✦</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-row">
+        <label class="search"><span>⌕</span><input id="searchInput" placeholder="Rechercher un produit..."></label>
+        <button class="circle" id="settingsBtn">⚙</button>
+      </section>
+
+      <section class="promo">
+        <div><small>✨ OFFRE SPÉCIALE</small><h2>Jusqu'à <b>-50%</b></h2><p>Sur une sélection de produits</p></div>
+        <div class="promo-art">🎧<span>👟</span><span>📱</span></div>
+      </section>
+
+      <div class="section-title"><h2>Catégories</h2></div>
+      <div id="categories" class="categories"></div>
+
+      <section>
+        <div class="section-title"><h2>⚡ Ventes flash</h2><span id="timer" class="timer">02:14:37</span></div>
+        <div id="productGrid" class="product-grid"></div>
+      </section>
+    </section>
+
+    <section id="cart" class="page">
+      <div class="page-head"><h1>🛒 Mon panier</h1><button class="text-btn" id="clearCart">Vider</button></div>
+      <div id="cartItems"></div>
+      <div id="cartSummary" class="summary"></div>
+    </section>
+
+    <section id="favorites" class="page">
+      <div class="page-head"><h1>❤️ Mes favoris</h1></div>
+      <div id="favoriteGrid" class="product-grid"></div>
+    </section>
+
+    <section id="orders" class="page">
+      <div class="page-head"><h1>📦 Mes commandes</h1></div>
+      <div class="order-card">
+        <div class="order-top"><div><b>Commande #EM-38492</b><small>Paiement à la livraison</small></div><span class="status">En cours</span></div>
+        <div class="steps"><span class="done">✓<small>Confirmée</small></span><span class="done">✓<small>Emballée</small></span><span class="current">🚚<small>Livraison</small></span><span>○<small>Livrée</small></span></div>
+      </div>
+    </section>
+
+    <section id="account" class="page">
+      <div class="account-card">
+        <div class="avatar">G</div><span class="muted">Invité · Guest</span>
+        <h1>Mon compte</h1>
+        <div class="account-list">
+          <button>👤 Mes informations <span>›</span></button>
+          <button>📍 Mes adresses <span>›</span></button>
+          <button>💳 Méthodes de paiement <span>›</span></button>
+          <button>🔔 Notifications <span>›</span></button>
+          <button>🌙 Thème sombre <span>✓</span></button>
+          <button>🌍 Français · FCFA <span>›</span></button>
+        </div>
+        <button class="gold-btn full">Se connecter</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav active" data-page="home">⌂</button>
+    <button class="nav" data-page="cart">🛒<i id="cartCountNav">0</i></button>
+    <button class="nav" data-page="favorites">♡</button>
+    <button class="nav" data-page="account">♙</button>
+    <button class="nav" data-page="orders">▣</button>
+  </nav>
+</div>
+<div id="toast" class="toast"></div>
+<script>const defaultProducts=[
+{id:1,name:"Écouteurs sans fil Bluetooth",price:8900,old:12700,cat:"Électronique",emoji:"🎧",tag:"-30%",rating:"4.8 (124)"},
+{id:2,name:"Montre connectée Pro",price:24900,old:32000,cat:"Électronique",emoji:"⌚",tag:"Nouveau",rating:"4.7 (89)"},
+{id:3,name:"Sac à dos business",price:17500,old:25000,cat:"Mode",emoji:"🎒",tag:"-30%",rating:"4.6 (72)"},
+{id:4,name:"Sneakers Urbain Classique",price:29900,old:35000,cat:"Mode",emoji:"👟",tag:"Nouveau",rating:"4.5 (142)"},
+{id:5,name:"Lampe design scandinave",price:45500,cat:"Maison",emoji:"💡",rating:"4.7 (98)"},
+{id:6,name:"Sweat à capuche",price:14900,old:21000,cat:"Mode",emoji:"🧥",tag:"-30%",rating:"4.6 (72)"},
+{id:7,name:"Casque audio ANC",price:129000,cat:"Électronique",emoji:"🎧",rating:"4.8 (103)"},
+{id:8,name:"Parfum Élégance",price:19900,cat:"Beauté",emoji:"🧴",tag:"Nouveau",rating:"4.6 (65)"}
+];
+const money=n=>n.toLocaleString("fr-FR")+" FCFA";
+let products=JSON.parse(localStorage.getItem("eden_products")||"null")||defaultProducts;
+let cart=JSON.parse(localStorage.getItem("eden_cart")||"[]");
+let favorites=new Set(JSON.parse(localStorage.getItem("eden_favorites")||"[]"));
+let category="Tous";
+
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+function save(){localStorage.setItem("eden_products",JSON.stringify(products));localStorage.setItem("eden_cart",JSON.stringify(cart));localStorage.setItem("eden_favorites",JSON.stringify([...favorites]))}
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));
+ document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("active",n.dataset.page===id));
+ if(id==="cart")renderCart(); if(id==="favorites")renderFavorites(); window.scrollTo({top:0,behavior:"smooth"});
+}
+window.showPage=showPage;
+
+function productCard(p){
+ const fav=favorites.has(p.id);
+ return `<article class="product"><div class="product-img">${p.tag?`<span class="tag ${p.tag==="Nouveau"?"new":""}">${p.tag}</span>`:""}<button class="heart ${fav?"on":""}" onclick="toggleFav(${p.id})">${fav?"♥":"♡"}</button>${p.image?`<img src="${p.image}" alt="" style="width:100%;height:100%;object-fit:cover">`:`<span>${p.emoji||"📦"}</span>`}</div><div class="product-info"><div class="product-name">${p.name}</div><div class="price">${money(p.price)} ${p.old?`<span class="old">${money(p.old)}</span>`:""}</div><div class="rating">★ ${p.rating||"4.7 (0)"}</div><button class="add" onclick="addCart(${p.id})">Ajouter au panier</button></div></article>`;
+}
+function renderProducts(){
+ const q=(document.getElementById("searchInput").value||"").toLowerCase().trim();
+ const list=products.filter(p=>(category==="Tous"||p.cat===category)&&(!q||p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)));
+ document.getElementById("productGrid").innerHTML=list.length?list.map(productCard).join(""):`<div class="cart-row" style="grid-column:1/-1">Aucun produit trouvé.</div>`;
+}
+function renderCategories(){
+ const cats=["Tous",...new Set(products.map(p=>p.cat))];
+ document.getElementById("categories").innerHTML=cats.map(c=>`<button class="cat ${c===category?"active":""}" onclick="setCategory('${c.replace(/'/g,"\\'")}')">${c}</button>`).join("");
+}
+function setCategory(c){category=c;renderCategories();renderProducts()}
+window.setCategory=setCategory;
+function addCart(id){cart.push(id);save();updateCount();toast("Produit ajouté au panier 🛒")}
+window.addCart=addCart;
+function toggleFav(id){favorites.has(id)?favorites.delete(id):favorites.add(id);save();renderProducts();renderFavorites();toast(favorites.has(id)?"Ajouté aux favoris ❤️":"Retiré des favoris")}
+window.toggleFav=toggleFav;
+function updateCount(){document.getElementById("cartCountTop").textContent=cart.length;document.getElementById("cartCountNav").textContent=cart.length}
+function renderCart(){
+ const el=document.getElementById("cartItems");
+ if(!cart.length){el.innerHTML=`<div class="cart-row">Ton panier est vide 🛒</div>`;document.getElementById("cartSummary").innerHTML="";return}
+ const counts={};cart.forEach(id=>counts[id]=(counts[id]||0)+1);
+ el.innerHTML=Object.entries(counts).map(([id,q])=>{const p=products.find(x=>x.id==id);return `<div class="cart-row"><div><b>${p.emoji||"📦"} ${p.name}</b><small>${money(p.price)}</small></div><div class="qty"><button onclick="removeOne(${p.id})">−</button><b>${q}</b><button onclick="addCart(${p.id})">+</button></div></div>`}).join("");
+ const total=cart.reduce((s,id)=>s+(products.find(p=>p.id===id)?.price||0),0);
+ document.getElementById("cartSummary").innerHTML=`<div class="summary-line"><span>Sous-total</span><b>${money(total)}</b></div><div class="summary-line"><span>Livraison</span><b>À confirmer</b></div><div class="summary-line summary-total"><span>Total</span><span>${money(total)}</span></div><button class="gold-btn full" onclick="toast('Commande prête — paiement à la livraison')">Commander</button>`;
+}
+function removeOne(id){const i=cart.indexOf(id);if(i>=0)cart.splice(i,1);save();updateCount();renderCart()}
+window.removeOne=removeOne;
+function renderFavorites(){
+ const arr=products.filter(p=>favorites.has(p.id));document.getElementById("favoriteGrid").innerHTML=arr.length?arr.map(productCard).join(""):`<div class="cart-row" style="grid-column:1/-1">Aucun favori pour le moment ❤️</div>`;
+}
+document.querySelectorAll(".nav").forEach(n=>n.addEventListener("click",()=>showPage(n.dataset.page)));
+document.getElementById("cartTop").onclick=()=>showPage("cart");
+document.getElementById("searchInput").addEventListener("input",renderProducts);
+document.getElementById("clearCart").onclick=()=>{cart=[];save();updateCount();renderCart();toast("Panier vidé")};
+document.getElementById("notifyBtn").onclick=()=>toast("3 notifications");
+document.getElementById("settingsBtn").onclick=()=>toast("Les paramètres seront ajoutés dans la prochaine version");
+let seconds=2*3600+14*60+37;
+setInterval(()=>{seconds=Math.max(0,seconds-1);const h=String(Math.floor(seconds/3600)).padStart(2,"0"),m=String(Math.floor(seconds%3600/60)).padStart(2,"0"),s=String(seconds%60).padStart(2,"0");document.getElementById("timer").textContent=`${h}:${m}:${s}`},1000);
+renderCategories();renderProducts();renderCart();renderFavorites();updateCount();
+</script>
+</body>
+</html>

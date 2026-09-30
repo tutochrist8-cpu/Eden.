@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EDEN MARKET — Studio Créateur</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.admin-wrap{max-width:1100px;margin:auto}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:20px 0}.admin-head h1{margin:0;font-size:32px}.pill{padding:7px 10px;border:1px solid var(--line);border-radius:99px;color:var(--green);background:#0d1711;font-size:12px}.tabs{display:flex;gap:8px;overflow:auto;margin:15px 0}.tab{white-space:nowrap;padding:11px 15px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:#ddd;cursor:pointer}.tab.active{background:#292411;color:var(--gold);border-color:var(--gold)}.admin-page{display:none}.admin-page.active{display:block}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.field{display:flex;flex-direction:column;gap:7px}.field label{font-size:12px;color:var(--muted)}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:#0c100e;color:#fff;border-radius:12px;padding:12px;outline:none}.field textarea{min-height:110px;resize:vertical}.full-field{grid-column:1/-1}.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.mini-btn{border:1px solid var(--line);background:#0b0e0c;color:#eee;border-radius:9px;padding:8px 11px;cursor:pointer}.mini-btn.danger{color:#ff6975;border-color:#633039}.table-card{overflow:auto;border:1px solid var(--line);border-radius:17px;background:var(--panel)}table{width:100%;border-collapse:collapse;min-width:650px}th,td{text-align:left;padding:13px;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--muted)}.thumb{width:48px;height:48px;border-radius:9px;object-fit:cover;background:#222;display:grid;place-items:center;font-size:24px}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{border:1px solid var(--line);background:var(--panel);padding:17px;border-radius:16px}.stat b{display:block;font-size:24px;color:var(--gold)}.stat span{color:var(--muted);font-size:12px}.note{border-left:3px solid var(--gold);padding:10px 13px;background:#15140e;color:#c9c9bf;border-radius:8px;margin-top:12px}.preview{border:1px solid var(--line);border-radius:16px;padding:18px;background:#0b0e0c}.switch{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}@media(max-width:700px){.form-grid,.stat-grid{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="app admin-wrap">
+<header class="topbar">
+<a class="brand" href="index.html"><span class="brand-mark">🎩</span><span>EDEN <b>MARKET</b></span></a>
+<span class="pill">● Interface créateur</span>
+</header>
+
+<div class="admin-head"><div><h1>Studio Créateur</h1><p class="muted">Gère ton catalogue, tes annonces, tes promotions et ton contenu.</p></div><a class="gold-btn" href="index.html">Voir le site →</a></div>
+
+<div class="tabs">
+<button class="tab active" data-tab="dashboard">📊 Tableau de bord</button>
+<button class="tab" data-tab="products">🛍️ Produits</button>
+<button class="tab" data-tab="announcement">📣 Annonces</button>
+<button class="tab" data-tab="design">🎨 Apparence</button>
+<button class="tab" data-tab="orders">📦 Commandes</button>
+</div>
+
+<section id="dashboard" class="admin-page active">
+<div class="stat-grid">
+<div class="stat"><b id="statProducts">0</b><span>Produits</span></div>
+<div class="stat"><b id="statFav">0</b><span>Favoris locaux</span></div>
+<div class="stat"><b id="statCart">0</b><span>Articles panier</span></div>
+<div class="stat"><b>FCFA</b><span>Devise</span></div>
+</div>
+<div class="note">⚠️ Cette V1 utilise le stockage du navigateur. Après déploiement, nous connecterons Supabase pour que tes changements soient visibles par tous les clients, avec connexion admin sécurisée.</div>
+</section>
+
+<section id="products" class="admin-page">
+<div class="account-card" style="max-width:none;text-align:left">
+<h2>Ajouter un produit</h2>
+<form id="productForm">
+<div class="form-grid">
+<div class="field"><label>Nom</label><input id="name" required placeholder="Ex. Montre connectée Pro"></div>
+<div class="field"><label>Prix FCFA</label><input id="price" type="number" min="0" required placeholder="24900"></div>
+<div class="field"><label>Ancien prix</label><input id="old" type="number" min="0" placeholder="32000"></div>
+<div class="field"><label>Catégorie</label><input id="cat" required placeholder="Électronique"></div>
+<div class="field"><label>Photo — URL pour cette V1</label><input id="image" placeholder="https://.../photo.jpg"></div>
+<div class="field"><label>Icône de secours</label><input id="emoji" value="📦" placeholder="🎧"></div>
+<div class="field"><label>Étiquette</label><select id="tag"><option value="">Aucune</option><option>Nouveau</option><option>-10%</option><option>-20%</option><option>-30%</option><option>Promo</option></select></div>
+<div class="field"><label>Note</label><input id="rating" value="4.7 (0)" placeholder="4.8 (120)"></div>
+</div>
+<div class="admin-actions"><button class="gold-btn">Publier le produit</button><button type="reset" class="dark-btn">Effacer</button></div>
+</form>
+</div>
+<div class="section-title"><h2>Catalogue</h2><span id="productCount" class="muted"></span></div>
+<div class="table-card"><table><thead><tr><th>Produit</th><th>Catégorie</th><th>Prix</th><th>Étiquette</th><th>Action</th></tr></thead><tbody id="productTable"></tbody></table></div>
+</section>
+
+<section id="announcement" class="admin-page">
+<div class="account-card" style="max-width:none;text-align:left">
+<h2>Annonce d'accueil</h2>
+<div class="form-grid">
+<div class="field full-field"><label>Titre</label><input id="annTitle" placeholder="Bienvenue sur Eden Market"></div>
+<div class="field full-field"><label>Message</label><textarea id="annText" placeholder="Livraison rapide à Abidjan et partout en Côte d'Ivoire..."></textarea></div>
+<div class="field"><label>Bouton</label><input id="annButton" value="Découvrir"></div>
+<div class="field"><label>Statut</label><select id="annStatus"><option>Publié</option><option>Brouillon</option></select></div>
+</div>
+<div class="admin-actions"><button class="gold-btn" id="saveAnn">Publier l'annonce</button></div>
+<div class="preview" id="annPreview" style="margin-top:15px"></div>
+</div>
+</section>
+
+<section id="design" class="admin-page">
+<div class="account-card" style="max-width:none;text-align:left">
+<h2>Apparence & animations</h2>
+<div class="switch"><span>✨ Animation 3D du logo</span><input id="anim3d" type="checkbox" checked></div>
+<div class="switch"><span>⚡ Section ventes flash</span><input id="flash" type="checkbox" checked></div>
+<div class="switch"><span>🌙 Mode sombre</span><input id="dark" type="checkbox" checked></div>
+<div class="admin-actions"><button class="gold-btn" id="saveDesign">Enregistrer</button></div>
+</div>
+</section>
+
+<section id="orders" class="admin-page">
+<div class="account-card" style="max-width:none;text-align:left">
+<h2>Commandes</h2>
+<div class="order-card"><div class="order-top"><div><b>#EM-38492</b><small>Paiement à la livraison · Client invité</small></div><span class="status">En cours de livraison</span></div><div class="steps"><span class="done">✓<small>Confirmée</small></span><span class="done">✓<small>Emballée</small></span><span class="current">🚚<small>Livraison</small></span><span>○<small>Livrée</small></span></div><div class="admin-actions"><button class="mini-btn">Marquer livrée</button><button class="mini-btn">Contacter client</button></div></div>
+</div>
+</section>
+</div>
+<script>
+const key="eden_products";
+let products=JSON.parse(localStorage.getItem(key)||"[]");
+const money=n=>Number(n).toLocaleString("fr-FR")+" FCFA";
+function save(){localStorage.setItem(key,JSON.stringify(products));}
+function render(){
+document.getElementById("statProducts").textContent=products.length;
+document.getElementById("statFav").textContent=JSON.parse(localStorage.getItem("eden_favorites")||"[]").length;
+document.getElementById("statCart").textContent=JSON.parse(localStorage.getItem("eden_cart")||"[]").length;
+document.getElementById("productCount").textContent=products.length+" produit(s)";
+document.getElementById("productTable").innerHTML=products.map(p=>`<tr><td><div style="display:flex;align-items:center;gap:10px"><div class="thumb">${p.image?`<img src="${p.image}" style="width:100%;height:100%;object-fit:cover;border-radius:9px">`:p.emoji||"📦"}</div><b>${p.name}</b></div></td><td>${p.cat}</td><td>${money(p.price)}</td><td>${p.tag||"—"}</td><td><button class="mini-btn danger" onclick="removeProduct(${p.id})">Supprimer</button></td></tr>`).join("")||`<tr><td colspan="5">Aucun produit.</td></tr>`;
+}
+function removeProduct(id){products=products.filter(p=>p.id!==id);save();render();}
+document.getElementById("productForm").addEventListener("submit",e=>{
+e.preventDefault(); products.unshift({id:Date.now(),name:document.getElementById("name").value,price:Number(document.getElementById("price").value),old:Number(document.getElementById("old").value)||0,cat:document.getElementById("cat").value,image:document.getElementById("image").value.trim(),emoji:document.getElementById("emoji").value||"📦",tag:document.getElementById("tag").value,rating:document.getElementById("rating").value||"4.7 (0)"});save();e.target.reset();document.getElementById("emoji").value="📦";document.getElementById("rating").value="4.7 (0)";render();alert("Produit publié dans cette V1.");
+});
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".admin-page").forEach(x=>x.classList.remove("active"));t.classList.add("active");document.getElementById(t.dataset.tab).classList.add("active")});
+const loadAnn=()=>{const a=JSON.parse(localStorage.getItem("eden_announcement")||"{}");annTitle.value=a.title||"";annText.value=a.text||"";annButton.value=a.button||"Découvrir";annStatus.value=a.status||"Publié";updatePreview()};
+function updatePreview(){annPreview.innerHTML=`<b style="color:var(--gold)">${annTitle.value||"Votre titre"}</b><p>${annText.value||"Votre message apparaîtra ici."}</p><button class="gold-btn">${annButton.value||"Découvrir"}</button>`}
+[annTitle,annText,annButton,annStatus].forEach(x=>x.addEventListener("input",updatePreview));
+saveAnn.onclick=()=>{localStorage.setItem("eden_announcement",JSON.stringify({title:annTitle.value,text:annText.value,button:annButton.value,status:annStatus.value}));alert("Annonce enregistrée.")};
+saveDesign.onclick=()=>{localStorage.setItem("eden_design",JSON.stringify({anim3d:anim3d.checked,flash:flash.checked,dark:dark.checked}));alert("Apparence enregistrée.")};
+loadAnn();render();
+</script>
+</body></html>
